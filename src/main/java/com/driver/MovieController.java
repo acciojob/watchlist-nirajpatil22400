@@ -17,8 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("movies")
-public class MovieController
-{
+public class MovieController {
     @Autowired
     MovieService movieService;
 
@@ -59,7 +58,7 @@ public class MovieController
     }
 
     @GetMapping("/get-all-movies")
-    public ResponseEntity<List<String>> getAllMovies(){
+    public ResponseEntity<List<String>> findAllMovies(){
         List<String> movies = movieService.findAllMovies();
         return new ResponseEntity<>(movies, HttpStatus.CREATED);
     }
@@ -69,7 +68,6 @@ public class MovieController
         movieService.deleteDirector(director);
         return new ResponseEntity<>(director + " removed successfully", HttpStatus.CREATED);
     }
-
     @DeleteMapping("/delete-all-directors")
     public ResponseEntity<String> deleteAllDirectors(){
         movieService.deleteAllDirectors();
